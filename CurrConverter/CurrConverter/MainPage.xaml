@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CurrConverter.MainPage"
+             xmlns:viewModels="clr-namespace:CurrConverter.ViewModels;assembly=CurrConverter"
+             x:DataType="viewModels:MainViewModel">
+
+    <StackLayout VerticalOptions="Center"
+                 Orientation="Vertical">
+        <!--<Label Text="{Binding SelectedDate}"
+               TextColor="Black"/>-->
+        <DatePicker MaximumDate="{Binding MaxDate}"
+                    Date="{Binding SelectedDate}"
+                    Format="dd/MM/yyyy"/>
+
+        <Frame x:Name="FirstTextFrame"
+                   Padding="0"
+                   HasShadow="False">
+            <FlexLayout>
+                <Picker SelectedIndex="{Binding FirstIndex, Mode=TwoWay}"
+                        SelectedItem="{Binding FirstItem}"
+                        FlexLayout.Basis="20%"
+                        Title="Valute"
+                        ItemsSource="{Binding ValList}"
+                        ItemDisplayBinding="{Binding CharCode}"
+                        FontFamily="PoppinsItalic"/>
+                <Entry FlexLayout.Basis="79%"
+                       ClearButtonVisibility="WhileEditing"
+                       Text="{Binding FirstValue}"
+                       Keyboard="Numeric"
+                       FontFamily="PoppinsItalic"
+                       />
+            </FlexLayout>
+        </Frame>
+        <Frame x:Name="SecondTextFrame"
+                   Padding="0"
+                   HasShadow="False">
+            <FlexLayout>
+                <Picker SelectedIndex="{Binding SecondIndex, Mode=TwoWay}"
+                        FlexLayout.Basis="20%"
+                        Title="Valute"
+                        ItemsSource="{Binding ValList}"
+                        ItemDisplayBinding="{Binding CharCode}"
+                        FontFamily="PoppinsItalic"/>
+                <Entry FlexLayout.Basis="79%"
+                       ClearButtonVisibility="WhileEditing"
+                       Text="{Binding SecondValue}"
+                       Keyboard="Numeric"
+                       FontFamily="PoppinsItalic"
+                        />
+            </FlexLayout>
+        </Frame>
+    </StackLayout>
+
+</ContentPage>
